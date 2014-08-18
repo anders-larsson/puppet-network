@@ -7,6 +7,7 @@
 #   $ipaddress    - required
 #   $netmask      - required
 #   $gateway      - optional
+#   $hwaddr_disable   - optional
 #   $macaddress   - optional - defaults to macaddress_$title
 #   $mtu          - optional
 #   $ethtool_opts - optional
@@ -35,6 +36,7 @@ define network::if::static (
   $ipaddress,
   $netmask,
   $gateway = '',
+  $hwaddr_disable = false,
   $macaddress = '',
   $mtu = '',
   $ethtool_opts = '',
@@ -56,18 +58,19 @@ define network::if::static (
   }
 
   network::if::base { $title:
-    ensure       => $ensure,
-    ipaddress    => $ipaddress,
-    netmask      => $netmask,
-    gateway      => $gateway,
-    macaddress   => $macaddy,
-    bootproto    => $bootproto,
-    mtu          => $mtu,
-    ethtool_opts => $ethtool_opts,
-    bonding_opts => '',
-    peerdns      => $peerdns,
-    dns1         => $dns1,
-    dns2         => $dns2,
-    domain       => $domain,
+    ensure          => $ensure,
+    ipaddress       => $ipaddress,
+    netmask         => $netmask,
+    gateway         => $gateway,
+    hwaddr_disable  => $hwaddr_disable,
+    macaddress      => $macaddy,
+    bootproto       => $bootproto,
+    mtu             => $mtu,
+    ethtool_opts    => $ethtool_opts,
+    bonding_opts    => '',
+    peerdns         => $peerdns,
+    dns1            => $dns1,
+    dns2            => $dns2,
+    domain          => $domain,
   }
 }

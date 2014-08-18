@@ -49,6 +49,7 @@ define network::if::base (
   $netmask,
   $macaddress,
   $gateway = '',
+  $hwaddr_disable,
   $bootproto = 'none',
   $mtu = '',
   $ethtool_opts = '',
