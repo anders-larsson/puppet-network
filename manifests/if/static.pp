@@ -3,18 +3,18 @@
 # Creates a normal interface with static IP address.
 #
 # Parameters:
-#   $ensure       - required - up|down
-#   $ipaddress    - required
-#   $netmask      - required
-#   $gateway      - optional
-#   $hwaddr_disable   - optional
-#   $macaddress   - optional - defaults to macaddress_$title
-#   $mtu          - optional
-#   $ethtool_opts - optional
-#   $peerdns      - optional
-#   $dns1         - optional
-#   $dns2         - optional
-#   $domain       - optional
+#   $ensure         - required - up|down
+#   $ipaddress      - required
+#   $netmask        - required
+#   $gateway        - optional
+#   $hwaddr_enable  - optional
+#   $macaddress     - optional - defaults to macaddress_$title
+#   $mtu            - optional
+#   $ethtool_opts   - optional
+#   $peerdns        - optional
+#   $dns1           - optional
+#   $dns2           - optional
+#   $domain         - optional
 #
 # Actions:
 #
@@ -36,7 +36,7 @@ define network::if::static (
   $ipaddress,
   $netmask,
   $gateway = '',
-  $hwaddr_disable = false,
+  $hwaddr_enable = true,
   $macaddress = '',
   $mtu = '',
   $ethtool_opts = '',
@@ -62,7 +62,7 @@ define network::if::static (
     ipaddress       => $ipaddress,
     netmask         => $netmask,
     gateway         => $gateway,
-    hwaddr_disable  => $hwaddr_disable,
+    hwaddr_enable   => $hwaddr_enable,
     macaddress      => $macaddy,
     bootproto       => $bootproto,
     mtu             => $mtu,
